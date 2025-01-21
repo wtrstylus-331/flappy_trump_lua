@@ -16,8 +16,8 @@ function love.update(dt)
         plr:Update(dt)
 
         if action then
-            plr:SetYVelocity(-150)  -- Apply upward velocity when the mouse is clicked
-            action = false   -- Reset the click state to avoid continuous jumping
+            plr:SetYVelocity(-150)
+            action = false
         end
     end
 end
@@ -27,7 +27,7 @@ function love.draw()
 end
 
 function love.mousepressed(x, y, button, istouch, presses)
-    if button == 1 then  -- Left mouse button (button 1 is usually the left button)
+    if button == 1 then
         action = true
     end
 end
