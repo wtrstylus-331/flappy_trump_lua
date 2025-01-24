@@ -13,7 +13,7 @@ function Player.new()
     instance.rotation = 0
     instance.width = 64
     instance.height = 64
-    instance.gravity = 8
+    instance.gravity = 10
     instance.downwardForce = 40
     instance.sprite = love.graphics.newImage("assets/player.png")
 
@@ -33,6 +33,7 @@ function Player:SetDownwardForce(force)
 end
 
 function Player:Center()
+    self.rotation = 0
     self.x = (love.graphics.getPixelWidth() / 2) - (self.width / 2)
     self.y = (love.graphics.getPixelHeight() / 2) - (self.height / 2)
 end
