@@ -7,6 +7,8 @@ function Pipe.new()
     local instance = {}
     setmetatable(instance, PipeMeta)
 
+    instance.passed = false
+
     instance.xVelocity = -100
 
     instance.topX = 800
@@ -16,7 +18,7 @@ function Pipe.new()
     instance.bottomY = 500
 
     instance.width = 94
-    instance.height = 363
+    instance.height = 360
 
     instance.topSprite = love.graphics.newImage("assets/pipe_top.png")
     instance.bottomSprite = love.graphics.newImage("assets/pipe_bottom.png")
@@ -53,19 +55,25 @@ function Pipe:Update(dt)
 end
 
 function Pipe:DetectCollision(player)
-    plr = player
-
     local topCollision = 
-        player.x < self.topX + self.width and
-        player.x + player.width > self.topX and
+        player.x - 2 < self.topX + self.width and
+        (player.x + player.width) - 2 > self.topX and
         player.y + 2 < self.topY + self.height
 
     local bottomCollision = 
-        player.x < self.bottomX + self.width and
-        player.x + player.width > self.bottomX and
-        player.y + player.height > self.bottomY
+        player.x - 2 < self.bottomX + self.width and
+        (player.x + player.width) - 2 > self.bottomX and
+        (player.y + player.height) - 2 > self.bottomY
 
     return topCollision or bottomCollision
+end
+
+function Pipe:Passed(player)
+    if not self.passed and player.x > self.topX + self.width then
+        self.passed = true
+        return true
+    end
+    return false
 end
 
 return Pipe
