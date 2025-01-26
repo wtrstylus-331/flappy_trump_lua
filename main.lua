@@ -278,6 +278,7 @@ function love.mousepressed(x, y, button, istouch, presses)
                         paused = true
                         dead = false
                         clearPipes()
+                        rng()
                         scoreCounter.score = 0
                         plr:Center()
                     end
