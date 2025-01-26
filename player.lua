@@ -47,7 +47,7 @@ function Player:Update(dt)
 
     if self.rotation < 0.8 then
         self.rotation = self.rotation + 0.4 * 1.05 * dt
-        self.x = self.x + 15 * dt
+        self.x = self.x + 10 * dt
     end
 
     self.y = self.y + self.yVelocity * dt
